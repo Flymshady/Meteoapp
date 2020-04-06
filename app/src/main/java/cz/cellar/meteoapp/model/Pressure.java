@@ -38,22 +38,19 @@ public class Pressure {
         this.color = color;
     }
 
-    public void countStats(float value) {
-        if (value >= 1010 && value <= 1015) {
-            this.info = ("Normální atmosferický tlak");
-            this.color = Color.rgb(26, 188, 156 );
-        } else if (value > 1015 && value <= 1030) {
-            this.info = ("Vyšší atmosferický tlak, možné ohrožení");
-            this.color = Color.rgb(20, 143, 119 );
-        } else if (value > 1030) {
-            this.info = ("Vysoký atmosferický tlak, hrozí nebezpečí");
-            this.color = Color.rgb(17, 120, 100);
-        } else if (value < 1010 && value >= 995) {
-            this.info = ("Nižší atmosferický tlak, možné ohrožení");
-            this.color = Color.rgb(118, 215, 196);
-        } else if (value < 995) {
-            this.info = ("Nízký atmosferický tlak, hrozí nebezpečí");
-            this.color = Color.rgb(232, 248, 245);
-        }
-    }
+
+   public void countStats(float value){
+       this.color=Color.rgb(Double.valueOf(Math.abs(value-1100)/4.5).intValue(), 255, Double.valueOf(Math.abs(value-1100)/4.5).intValue() );
+       if (value >= 1010 && value <= 1015) {
+           this.info = ("Normální atmosferický tlak");
+       } else if (value > 1015 && value <= 1030) {
+           this.info = ("Vyšší atmosferický tlak, možné ohrožení");
+       } else if (value > 1030) {
+           this.info = ("Vysoký atmosferický tlak, hrozí nebezpečí");
+       } else if (value < 1010 && value >= 995) {
+           this.info = ("Nižší atmosferický tlak, možné ohrožení");
+       } else if (value < 995) {
+           this.info = ("Nízký atmosferický tlak, hrozí nebezpečí");
+       }
+   }
 }
