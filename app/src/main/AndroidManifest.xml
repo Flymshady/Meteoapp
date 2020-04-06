@@ -18,6 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".TemperatureActivity"></activity>
+        <activity android:name=".PressureActivity"></activity>
     </application>
 
 </manifest>
