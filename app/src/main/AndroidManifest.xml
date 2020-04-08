@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".TemperatureActivity"></activity>
         <activity android:name=".PressureActivity"></activity>
+        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".SignupActivity"></activity>
     </application>
 
 </manifest>

@@ -32,37 +32,35 @@
         app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnCreateAcc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Přihlásit se"
+        android:text="Vytvořit účet"
         android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <TextView
-        android:id="@+id/signup"
+        android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registrace"
+        android:text="Přihlášení"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCreateAcc" />
 
     <EditText
-        android:id="@+id/txtPrihlaseni"
+        android:id="@+id/textSignup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Přihlášení"
+        android:text="Registrace"
         android:textAlignment="center"
         android:textColor="#009688"
-        android:textColorHighlight="#00A87373"
         android:textSize="36sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
