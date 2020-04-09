@@ -42,7 +42,7 @@ public class Temperature {
 
         if(value>=0 && value<30){
             this.color=Color.rgb(255, 255, Double.valueOf(Math.abs(value-30)*8.5).intValue());
-         }else if(value>=30 && value<100){
+         }else if(value>=30 && value<=100){
             this.color=Color.rgb(255, Double.valueOf(Math.abs(((value-30)*3.6)-255)).intValue(), 0);
         }else if(value<0){
             this.color=Color.rgb(Double.valueOf(Math.abs((Math.abs(value)/1.1)-255)).intValue(), Double.valueOf(Math.abs((Math.abs(value)/1.1)-255)).intValue(), 255);
@@ -75,8 +75,12 @@ public class Temperature {
         else if(value<-10 && value>=-20){
             this.info=("Příliš nízká teplota, možné ohrožení");
         }
-        else if(value<-20 && value>=-30){
+        else if(value<-20){
             this.info=("Příliš nízká teplota, hrozí nebezpečí");
+        }
+        else{
+            this.info=("Došlo k chybě");
+            this.color=Color.rgb(255, 255, 255);
         }
     }
 }

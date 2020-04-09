@@ -51,6 +51,10 @@ public class Pressure {
            this.info = ("Nižší atmosferický tlak, možné ohrožení");
        } else if (value < 995) {
            this.info = ("Nízký atmosferický tlak, hrozí nebezpečí");
+       }else{
+           this.info=("Došlo k chybě");
+           this.color=Color.rgb(255, 255, 255);
        }
+
    }
 }

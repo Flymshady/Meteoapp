@@ -18,6 +18,7 @@ public class HomeActivity extends AppCompatActivity{
     Button btnTemp;
     Button btnPress;
     Button btnLogout;
+    Button btnMyMap;
     FirebaseAuth.AuthStateListener mAuthStateListener;
 
     @Override
@@ -48,6 +49,13 @@ public class HomeActivity extends AppCompatActivity{
                 startActivity(intLogout);
             }
         });
+        btnMyMap=findViewById(R.id.btnMyMap);
+        btnMyMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchActivityMyMap();
+            }
+        });
     }
 
     private void launchActivityTemp() {
@@ -56,6 +64,10 @@ public class HomeActivity extends AppCompatActivity{
     }
     private void launchActivityPress() {
         Intent intent = new Intent(this, PressureActivity.class);
+        startActivity(intent);
+    }
+    private void launchActivityMyMap() {
+        Intent intent = new Intent(this, MapActivity.class);
         startActivity(intent);
     }
 
