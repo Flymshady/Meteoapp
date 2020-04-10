@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +24,8 @@ public class PressureActivity extends AppCompatActivity implements SensorEventLi
     private static final String TAG = "TemperatureActivity";
     private SensorManager sensorManager;
     private Sensor pressure;
-    TextView press, pressInfo;
+    TextView press;
+    ImageView good, danger, warning;
     private Pressure pressureModel;
     private Button pressBack;
     private float pv;
@@ -39,7 +41,12 @@ public class PressureActivity extends AppCompatActivity implements SensorEventLi
 
 
         press=findViewById(R.id.press);
-        pressInfo=findViewById(R.id.pressInfo);
+        good=findViewById(R.id.good);
+        warning=findViewById(R.id.warning);
+        danger=findViewById(R.id.danger);
+        good.setVisibility(View.INVISIBLE);
+        warning.setVisibility(View.INVISIBLE);
+        danger.setVisibility(View.INVISIBLE);
         pressBack=findViewById(R.id.pressBack);
 
 
@@ -86,7 +93,21 @@ public class PressureActivity extends AppCompatActivity implements SensorEventLi
             pv=event.values[0];
             pressureModel.setValue(event.values[0]);
             pressureModel.countStats(event.values[0]);
-            pressInfo.setText(pressureModel.getInfo());
+
+            if(pressureModel.getStatus()==1){
+                good.setVisibility(View.VISIBLE);
+                warning.setVisibility(View.INVISIBLE);
+                danger.setVisibility(View.INVISIBLE);
+            }else if(pressureModel.getStatus()==2){
+                warning.setVisibility(View.VISIBLE);
+                good.setVisibility(View.INVISIBLE);
+                danger.setVisibility(View.INVISIBLE);
+            }else if(pressureModel.getStatus()==3){
+                danger.setVisibility(View.VISIBLE);
+                good.setVisibility(View.INVISIBLE);
+                warning.setVisibility(View.INVISIBLE);
+            }
+
             getWindow().getDecorView().setBackgroundColor(pressureModel.getColor());
 
          //   temperatureModel=new Temperature(event.values[0]);

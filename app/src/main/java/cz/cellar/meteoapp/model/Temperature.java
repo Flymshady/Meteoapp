@@ -4,8 +4,16 @@ import android.graphics.Color;
 
 public class Temperature {
     private float value;
-    private String info;
     private int color;
+    private int status;
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public Temperature(float value) {
         this.value = value;
@@ -20,14 +28,6 @@ public class Temperature {
 
     public void setValue(float value) {
         this.value = value;
-    }
-
-    public String getInfo() {
-        return info;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
     }
 
     public int getColor() {
@@ -49,37 +49,37 @@ public class Temperature {
         }
 
         if (value==0){
-            this.info=("Bod mrazu, námraza na silnicích");
+            this.status=2;
         }
         else if(value>0 && value<=4){
-            this.info=("Možná námraza na silnicích");
+            this.status=2;
         }
         else if(value>4 && value<=10){
-            this.info=("Chladno, není vyžadována zvláštní pozornost");
+            this.status=1;
         }
         else if(value>10 && value<=20){
-            this.info=("Jarní teplota, není vyžadována zvláštní pozornost");
+            this.status=1;
         }
         else if(value>20 && value<=30){
-            this.info=("Letní teplota, není vyžadována zvláštní pozornost");
+            this.status=1;
         }
         else if(value>30 && value<=40){
-            this.info=("Vysoká teplota, možné ohrožení");
+            this.status=2;
         }
         else if(value>40){
-            this.info=("Příliš vysoká teplota, hrozí nebezpečí");
+            this.status=3;
         }
         else if(value<0 && value>=-10){
-            this.info=("Teplota pod bodem mrazu");
+            this.status=2;
         }
         else if(value<-10 && value>=-20){
-            this.info=("Příliš nízká teplota, možné ohrožení");
+            this.status=2;
         }
         else if(value<-20){
-            this.info=("Příliš nízká teplota, hrozí nebezpečí");
+            this.status=3;
         }
         else{
-            this.info=("Došlo k chybě");
+            this.status=2;
             this.color=Color.rgb(255, 255, 255);
         }
     }

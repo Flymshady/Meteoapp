@@ -12,35 +12,60 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:text="tempText"
+        android:textAlignment="center"
         android:textSize="50sp"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tempInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="tempInfoText"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/temp" />
 
     <Button
         android:id="@+id/tempBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="tempBack"
+        android:text="Uložit"
+        android:background="@android:color/holo_green_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tempInfo"
+        app:layout_constraintTop_toBottomOf="@+id/good"
         app:layout_constraintVertical_bias="0.506" />
+
+    <ImageView
+        android:id="@+id/good"
+        android:visibility="invisible"
+        android:layout_width="124dp"
+        android:layout_height="138dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/temp"
+        app:srcCompat="@drawable/good" />
+
+    <ImageView
+        android:id="@+id/warning"
+        android:visibility="invisible"
+        android:layout_width="124dp"
+        android:layout_height="138dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/temp"
+        app:srcCompat="@drawable/warning"
+      />
+    <ImageView
+        android:id="@+id/danger"
+        android:visibility="invisible"
+        android:layout_width="124dp"
+        android:layout_height="138dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/temp"
+        app:srcCompat="@drawable/danger"
+        />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

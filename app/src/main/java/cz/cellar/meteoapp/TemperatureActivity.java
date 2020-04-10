@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +25,8 @@ public class TemperatureActivity  extends AppCompatActivity implements SensorEve
     private static final String TAG = "TemperatureActivity";
     private SensorManager sensorManager;
     private Sensor temperature;
-    TextView temp, tempInfo;
+    TextView temp;
+    ImageView good, warning, danger;
     private Temperature temperatureModel;
     private Button tempBack;
     private float tv;
@@ -36,11 +38,16 @@ public class TemperatureActivity  extends AppCompatActivity implements SensorEve
         temperatureModel=new Temperature();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_temperature);
+        good=findViewById(R.id.good);
+        warning=findViewById(R.id.warning);
+        danger=findViewById(R.id.danger);
+        good.setVisibility(View.INVISIBLE);
+        warning.setVisibility(View.INVISIBLE);
+        danger.setVisibility(View.INVISIBLE);
 
 
 
         temp=findViewById(R.id.temp);
-        tempInfo=findViewById(R.id.tempInfo);
         tempBack=findViewById(R.id.tempBack);
 
 
@@ -60,7 +67,7 @@ public class TemperatureActivity  extends AppCompatActivity implements SensorEve
             @Override
             public void onClick(View v) {
 
-                SharedPreferences tempshare = getSharedPreferences(TEMP_VALUES,1);
+                SharedPreferences tempshare = getSharedPreferences(TEMP_VALUES,0);
                 SharedPreferences.Editor editor = tempshare.edit();
                 editor.putFloat("tempshare", tv);
                 editor.commit();
@@ -87,7 +94,19 @@ public class TemperatureActivity  extends AppCompatActivity implements SensorEve
             tv=event.values[0];
             temperatureModel.setValue(event.values[0]);
             temperatureModel.countStats(event.values[0]);
-            tempInfo.setText(temperatureModel.getInfo());
+            if(temperatureModel.getStatus()==1){
+                good.setVisibility(View.VISIBLE);
+                warning.setVisibility(View.INVISIBLE);
+                danger.setVisibility(View.INVISIBLE);
+            }else if(temperatureModel.getStatus()==2){
+                warning.setVisibility(View.VISIBLE);
+                good.setVisibility(View.INVISIBLE);
+                danger.setVisibility(View.INVISIBLE);
+            }else if(temperatureModel.getStatus()==3){
+                danger.setVisibility(View.VISIBLE);
+                good.setVisibility(View.INVISIBLE);
+                warning.setVisibility(View.INVISIBLE);
+            }
             getWindow().getDecorView().setBackgroundColor(temperatureModel.getColor());
 
          //   temperatureModel=new Temperature(event.values[0]);
