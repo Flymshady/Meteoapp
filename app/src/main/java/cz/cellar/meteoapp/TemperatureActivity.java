@@ -2,6 +2,8 @@ package cz.cellar.meteoapp;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -25,7 +27,8 @@ public class TemperatureActivity  extends AppCompatActivity implements SensorEve
     TextView temp, tempInfo;
     private Temperature temperatureModel;
     private Button tempBack;
-
+    private float tv;
+    public static final String TEMP_VALUES = "TempValuesFile";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +43,7 @@ public class TemperatureActivity  extends AppCompatActivity implements SensorEve
         tempInfo=findViewById(R.id.tempInfo);
         tempBack=findViewById(R.id.tempBack);
 
-        tempBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+
 
         Log.d(TAG, "onCreate: Initializing Sensor Services");
         sensorManager=(SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -58,13 +56,35 @@ public class TemperatureActivity  extends AppCompatActivity implements SensorEve
             temp.setText("Temperature Sensor Not Supported");
         }
 
+        tempBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                SharedPreferences tempshare = getSharedPreferences(TEMP_VALUES,1);
+                SharedPreferences.Editor editor = tempshare.edit();
+                editor.putFloat("tempshare", tv);
+                editor.commit();
+                finish();
+
+/*
+                Intent i = new Intent(TemperatureActivity.this, HomeActivity.class);
+                i.putExtra("t",tv);
+                startActivity(i);
+
+*/
+            }
+        });
+
     }
+
+
 
     @Override
     public void onSensorChanged(SensorEvent event) {
         Sensor sensor = event.sensor;
         if(sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE){
             temp.setText("Teplota: "+event.values[0]+" °C");
+            tv=event.values[0];
             temperatureModel.setValue(event.values[0]);
             temperatureModel.countStats(event.values[0]);
             tempInfo.setText(temperatureModel.getInfo());

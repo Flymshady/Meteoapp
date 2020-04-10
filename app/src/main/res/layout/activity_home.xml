@@ -7,43 +7,101 @@
     tools:context=".MainActivity">
 
 
-    <Button
-        android:id="@+id/btnTemp"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="231dp"
+        android:layout_height="340dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="1dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/user"
+            android:layout_width="match_parent"
+            android:layout_height="97dp"
+            android:text="user" />
+
+        <TextView
+            android:id="@+id/temp"
+            android:layout_width="match_parent"
+            android:layout_height="107dp"
+            android:text="temp" />
+
+        <TextView
+            android:id="@+id/press"
+            android:layout_width="match_parent"
+            android:layout_height="103dp"
+            android:text="press" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="128dp"
+        android:layout_height="353dp"
+        android:layout_marginTop="62dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:text="Odhlásit se"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btnTemp"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_marginTop="55dp"
+            android:text="Změřit" />
+
+        <Button
+            android:id="@+id/btnPress"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_marginTop="70dp"
+            android:text="Změřit" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="btnTemp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="datedatedatedatedatedatedatedatedatedatedate"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     <Button
-        android:id="@+id/btnPress"
+        android:id="@+id/btnShare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="btnPress"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="200dp"
+        android:text="Sdílet"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnTemp" />
+        app:layout_constraintTop_toBottomOf="@+id/date" />
 
     <Button
         android:id="@+id/btnMyMap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="btnMap"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="30dp"
+        android:text="Mapa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPress" />
+        app:layout_constraintTop_toBottomOf="@+id/btnShare" />
 
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        app:layout_constraintBottom_toTopOf="@+id/btnTemp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

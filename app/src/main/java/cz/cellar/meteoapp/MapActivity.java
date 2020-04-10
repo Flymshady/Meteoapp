@@ -82,8 +82,8 @@ public class MapActivity  extends AppCompatActivity implements OnMapReadyCallbac
         String username = "test-user";
         Date date = new Date();
         String id = latLng+username+date;
-        Float tempv = 123.1f;
-        Float pressv = 456.1f;
+        float tempv = 123.1f;
+        float pressv = 456.1f;
 
 
         mMap.addMarker(new MarkerOptions().position(latLng).title(username).snippet(String.valueOf(date)));

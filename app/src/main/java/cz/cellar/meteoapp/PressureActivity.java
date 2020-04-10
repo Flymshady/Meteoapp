@@ -1,6 +1,8 @@
 package cz.cellar.meteoapp;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -24,6 +26,8 @@ public class PressureActivity extends AppCompatActivity implements SensorEventLi
     TextView press, pressInfo;
     private Pressure pressureModel;
     private Button pressBack;
+    private float pv;
+    public static final String PRESS_VALUES = "PressValuesFile";
 
 
     @Override
@@ -38,12 +42,9 @@ public class PressureActivity extends AppCompatActivity implements SensorEventLi
         pressInfo=findViewById(R.id.pressInfo);
         pressBack=findViewById(R.id.pressBack);
 
-        pressBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+
+
+
 
         Log.d(TAG, "onCreate: Initializing Sensor Services");
         sensorManager=(SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -55,6 +56,25 @@ public class PressureActivity extends AppCompatActivity implements SensorEventLi
         }else{
             press.setText("Pressure Sensor Not Supported");
         }
+        pressBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                SharedPreferences pressshare = getSharedPreferences(PRESS_VALUES,0);
+                SharedPreferences.Editor editor2 = pressshare.edit();
+                editor2.putFloat("pressshare", pv);
+                editor2.commit();
+                finish();
+
+/*
+
+                Intent i = new Intent(PressureActivity.this, HomeActivity.class);
+                i.putExtra("p",pv);
+                startActivity(i);
+
+*/
+            }
+        });
 
     }
 
@@ -63,6 +83,7 @@ public class PressureActivity extends AppCompatActivity implements SensorEventLi
         Sensor sensor = event.sensor;
         if(sensor.getType() == Sensor.TYPE_PRESSURE){
             press.setText("Atmosferický tlak: "+event.values[0]+" hPa");
+            pv=event.values[0];
             pressureModel.setValue(event.values[0]);
             pressureModel.countStats(event.values[0]);
             pressInfo.setText(pressureModel.getInfo());
