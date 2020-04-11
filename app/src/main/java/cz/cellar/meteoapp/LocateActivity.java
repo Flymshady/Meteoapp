@@ -9,7 +9,6 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
@@ -20,7 +19,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
 
 import java.io.IOException;
 import java.util.List;
@@ -31,7 +29,6 @@ public class LocateActivity extends AppCompatActivity {
 
     Button btnLocate, btnBack;
     TextView latitude, longitude, country, locality, addressline;
-    FusedLocationProviderClient fusedLocationProviderClient;
     public static final String LOCATE_VALUES = "LocateValuesFile";
     LocationManager locationManager;
     LocationListener locationListener;

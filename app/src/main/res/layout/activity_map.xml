@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center_horizontal"
     tools:context=".MapActivity">
 
 
@@ -12,39 +13,42 @@
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="410dp"
-        android:layout_height="593dp"
+        android:layout_height="548dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".MapActivity" />
 
     <LinearLayout
-        android:layout_width="403dp"
-        android:layout_height="75dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/map"
-        app:layout_constraintVertical_bias="0.387">
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="0dp">
 
         <Button
             android:id="@+id/btnLocate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
             android:background="@android:color/holo_green_dark"
             android:text="Zaměřit polohu" />
 
         <Button
-            android:id="@+id/btnLocate"
+            android:id="@+id/btnShare"
             android:layout_width="125dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="65dp"
-            android:background="@android:color/holo_green_dark"
+            android:background="@android:color/holo_blue_dark"
             android:text="Sdílet data" />
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/darker_gray"
+            android:text="Zpět" />
 
     </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -23,11 +23,12 @@ public class HomeActivity extends AppCompatActivity{
     TextView user, temp, press, date, addressline;
     FirebaseAuth mFirebaseAuth;
     private float tv, pv;
-    private String address;
+    private String address, datesharevalue;
 
     public static final String TEMP_VALUES = "TempValuesFile";
     public static final String PRESS_VALUES = "PressValuesFile";
     public static final String LOCATE_VALUES = "LocateValuesFile";
+    public static final String DATESHARE_VALUES = "DateShareValuesFile";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,11 +68,7 @@ public class HomeActivity extends AppCompatActivity{
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
                 finish();
-                /*
-                Intent intLogout = new Intent(HomeActivity.this, MainActivity.class);
-                startActivity(intLogout);
 
-                 */
             }
         });
 
@@ -97,35 +94,15 @@ public class HomeActivity extends AppCompatActivity{
         temp.setText("Teplota není naměřena");
         press.setText("Atmosferický tlak není naměřen");
 
-       /* Bundle extras = getIntent().getExtras();
-        if(extras != null){
-            if(extras.get("t")!=null){
-                tv= (float) extras.get("t");
-                SharedPreferences.Editor editor = tempshare.edit();
-                editor.putFloat("tempshare", tv);
-                editor.commit();
-
-            }
-            if(extras.get("p")!=null){
-                pv= (float) extras.get("p");
-                SharedPreferences.Editor editor2 = pressshare.edit();
-                editor2.putFloat("pressshare", pv);
-                editor2.commit();
-
-            }
-        }
-        else{
-
-        }
-*/
-
         tv = tempshare.getFloat("tempshare", tv);
         temp.setText("Teplota: "+tv+" °C");
         pv = pressshare.getFloat("pressshare", pv);
         press.setText("Tlak: "+pv+" hPa");
-        user.setText(mFirebaseAuth.getCurrentUser().getEmail());
-        Date d = new Date();
-        date.setText(d.toString());
+        user.setText("Uživatel: "+mFirebaseAuth.getCurrentUser().getEmail());
+
+        SharedPreferences dateshare = getSharedPreferences(DATESHARE_VALUES,0);
+        datesharevalue=dateshare.getString("dateshare", datesharevalue);
+        date.setText("Sdíleno: "+datesharevalue);
     }
 
     @Override
@@ -174,11 +151,7 @@ public class HomeActivity extends AppCompatActivity{
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
                 finish();
-                /*
-                Intent intLogout = new Intent(HomeActivity.this, MainActivity.class);
-                startActivity(intLogout);
 
-                 */
             }
         });
         btnMyMap=findViewById(R.id.btnMyMap);
@@ -192,14 +165,14 @@ public class HomeActivity extends AppCompatActivity{
         SharedPreferences tempshare = getSharedPreferences(TEMP_VALUES,0);
         SharedPreferences pressshare = getSharedPreferences(PRESS_VALUES,0);
 
-
         tv = tempshare.getFloat("tempshare", tv);
         temp.setText("Teplota: "+tv+" °C");
         pv = pressshare.getFloat("pressshare", pv);
         press.setText("Tlak: "+pv+" hPa");
-        user.setText(mFirebaseAuth.getCurrentUser().getEmail());
-        Date d = new Date();
-        date.setText(d.toString());
+        user.setText("Uživatel: "+mFirebaseAuth.getCurrentUser().getEmail());
+        SharedPreferences dateshare = getSharedPreferences(DATESHARE_VALUES,0);
+        datesharevalue=dateshare.getString("dateshare", datesharevalue);
+        date.setText("Sdíleno: "+datesharevalue);
     }
 
     private void launchActivityTemp() {

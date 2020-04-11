@@ -36,7 +36,7 @@ public class MarkerActivity extends AppCompatActivity {
             tempValue.setText("Teplota: "+extras.getString("temp") +" °C");
             pressValue.setText("Tlak: "+extras.getString("press")+" hPa");
             date.setText("Naměřeno: "+extras.getString("date"));
-            latlng.setText("Souřadnice: "+(extras.get("lat")+";"+extras.get("lng")));
+            latlng.setText("Zeměpisná šířka: "+(extras.get("lat")+ "\n" +"Zeměpisná délka: "+extras.get("lng")));
 
 
 
