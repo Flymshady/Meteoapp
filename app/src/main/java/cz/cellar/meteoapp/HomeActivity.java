@@ -13,24 +13,21 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Date;
 
-import cz.cellar.meteoapp.PressureActivity;
-import cz.cellar.meteoapp.R;
-import cz.cellar.meteoapp.TemperatureActivity;
-
 public class HomeActivity extends AppCompatActivity{
 
     Button btnTemp;
     Button btnPress;
     Button btnLogout;
     Button btnMyMap;
-    Button btnShare;
-    TextView user, temp, press, date;
+    Button btnLocate;
+    TextView user, temp, press, date, addressline;
     FirebaseAuth mFirebaseAuth;
     private float tv, pv;
+    private String address;
 
     public static final String TEMP_VALUES = "TempValuesFile";
     public static final String PRESS_VALUES = "PressValuesFile";
-
+    public static final String LOCATE_VALUES = "LocateValuesFile";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +40,13 @@ public class HomeActivity extends AppCompatActivity{
         press=findViewById(R.id.press);
         date=findViewById(R.id.date);
 
-        btnShare=findViewById(R.id.btnShare);
+
+        addressline=findViewById(R.id.addressline);
+        SharedPreferences locateshare = getSharedPreferences(LOCATE_VALUES,0);
+        address=locateshare.getString("locateshare", address);
+        addressline.setText(address);
+
+        btnLocate =findViewById(R.id.btnLocate);
         btnLogout=findViewById(R.id.btnLogout);
         btnTemp=findViewById(R.id.btnTemp);
         btnTemp.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +74,14 @@ public class HomeActivity extends AppCompatActivity{
                  */
             }
         });
+
+        btnLocate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchActivityLocate();
+            }
+        });
+
         btnMyMap=findViewById(R.id.btnMyMap);
         btnMyMap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,7 +141,13 @@ public class HomeActivity extends AppCompatActivity{
         press=findViewById(R.id.press);
         date=findViewById(R.id.date);
 
-        btnShare=findViewById(R.id.btnShare);
+
+        addressline=findViewById(R.id.addressline);
+        SharedPreferences locateshare = getSharedPreferences(LOCATE_VALUES,0);
+        address=locateshare.getString("locateshare", address);
+        addressline.setText(address);
+
+        btnLocate =findViewById(R.id.btnLocate);
         btnLogout=findViewById(R.id.btnLogout);
         btnTemp=findViewById(R.id.btnTemp);
         btnTemp.setOnClickListener(new View.OnClickListener() {
@@ -146,12 +163,22 @@ public class HomeActivity extends AppCompatActivity{
                 launchActivityPress();
             }
         });
+        btnLocate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchActivityLocate();
+            }
+        });
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
+                finish();
+                /*
                 Intent intLogout = new Intent(HomeActivity.this, MainActivity.class);
                 startActivity(intLogout);
+
+                 */
             }
         });
         btnMyMap=findViewById(R.id.btnMyMap);
@@ -185,6 +212,10 @@ public class HomeActivity extends AppCompatActivity{
     }
     private void launchActivityMyMap() {
         Intent intent = new Intent(this, MapActivity.class);
+        startActivity(intent);
+    }
+    private void launchActivityLocate() {
+        Intent intent = new Intent(this, LocateActivity.class);
         startActivity(intent);
     }
 
