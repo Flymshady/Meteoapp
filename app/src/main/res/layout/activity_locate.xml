@@ -9,18 +9,14 @@
 
     >
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnLocate"
-        android:text="Zaměřit polohu"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:layout_marginTop="32dp">
+            android:layout_marginTop="120dp">
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -42,7 +38,7 @@
         android:orientation="horizontal"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="25dp">
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -60,7 +56,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="25dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:textColor="#000000"
@@ -68,6 +64,13 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:id="@+id/btnLocate"
+        android:text="Zaměřit polohu"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:id="@+id/btnBack"
         android:text="Zpět"/>
 

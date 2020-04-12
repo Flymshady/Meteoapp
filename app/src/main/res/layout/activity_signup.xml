@@ -14,7 +14,7 @@
         android:ems="10"
         android:inputType="textEmailAddress"
         android:hint="Email"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -59,6 +59,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Registrace"
+        android:textStyle="bold"
         android:textAlignment="center"
         android:textColor="#009688"
         android:textSize="36sp"

@@ -169,7 +169,9 @@ public class HomeActivity extends AppCompatActivity{
         temp.setText("Teplota: "+tv+" °C");
         pv = pressshare.getFloat("pressshare", pv);
         press.setText("Tlak: "+pv+" hPa");
-        user.setText("Uživatel: "+mFirebaseAuth.getCurrentUser().getEmail());
+        if(mFirebaseAuth.getCurrentUser().getEmail()!=null) {
+            user.setText("Uživatel: " + mFirebaseAuth.getCurrentUser().getEmail());
+        }
         SharedPreferences dateshare = getSharedPreferences(DATESHARE_VALUES,0);
         datesharevalue=dateshare.getString("dateshare", datesharevalue);
         date.setText("Sdíleno: "+datesharevalue);

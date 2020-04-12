@@ -39,7 +39,7 @@
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:background="@android:color/holo_blue_dark"
-            android:text="Sdílet data" />
+            android:text="Uložit data" />
 
         <Button
             android:id="@+id/btnBack"

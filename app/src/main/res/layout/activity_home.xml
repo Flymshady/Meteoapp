@@ -90,7 +90,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnLocate"
             android:background="@android:color/holo_green_dark"
-            android:text="Změřit"/>
+            android:text="Zaměřit"/>
     </LinearLayout>
 
     <TextView
