@@ -63,12 +63,14 @@ public class HomeActivity extends AppCompatActivity{
                 launchActivityPress();
             }
         });
+
+
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                finish();
-
+                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -109,8 +111,6 @@ public class HomeActivity extends AppCompatActivity{
     protected void onResume() {
         super.onResume();
         setContentView(R.layout.activity_home);
-        setContentView(R.layout.activity_home);
-
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         user=findViewById(R.id.user);
@@ -146,14 +146,18 @@ public class HomeActivity extends AppCompatActivity{
                 launchActivityLocate();
             }
         });
+
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                finish();
-
+                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
+
+
+
         btnMyMap=findViewById(R.id.btnMyMap);
         btnMyMap.setOnClickListener(new View.OnClickListener() {
             @Override
