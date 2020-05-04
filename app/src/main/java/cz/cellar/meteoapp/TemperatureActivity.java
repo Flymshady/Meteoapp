@@ -73,12 +73,6 @@ public class TemperatureActivity  extends AppCompatActivity implements SensorEve
                 editor.commit();
                 finish();
 
-/*
-                Intent i = new Intent(TemperatureActivity.this, HomeActivity.class);
-                i.putExtra("t",tv);
-                startActivity(i);
-
-*/
             }
         });
 
@@ -108,11 +102,6 @@ public class TemperatureActivity  extends AppCompatActivity implements SensorEve
                 warning.setVisibility(View.INVISIBLE);
             }
             getWindow().getDecorView().setBackgroundColor(temperatureModel.getColor());
-
-         //   temperatureModel=new Temperature(event.values[0]);
-         //   temp.setText("Teplota: "+temperatureModel.getValue()+" °C");
-         //   tempInfo.setText(temperatureModel.getInfo());
-         //   currentView.setBackgroundColor(Integer.parseInt(temperatureModel.getColor()));
 
         }
     }

@@ -73,13 +73,6 @@ public class PressureActivity extends AppCompatActivity implements SensorEventLi
                 editor2.commit();
                 finish();
 
-/*
-
-                Intent i = new Intent(PressureActivity.this, HomeActivity.class);
-                i.putExtra("p",pv);
-                startActivity(i);
-
-*/
             }
         });
 

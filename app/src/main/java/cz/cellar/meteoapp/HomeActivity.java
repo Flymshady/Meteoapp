@@ -35,6 +35,9 @@ public class HomeActivity extends AppCompatActivity{
         setContentView(R.layout.activity_home);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
+        if(mFirebaseAuth.getCurrentUser()==null){
+            finish();
+        }
 
         user=findViewById(R.id.user);
         temp=findViewById(R.id.temp);
@@ -69,8 +72,7 @@ public class HomeActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
 
@@ -100,7 +102,11 @@ public class HomeActivity extends AppCompatActivity{
         temp.setText("Teplota: "+tv+" °C");
         pv = pressshare.getFloat("pressshare", pv);
         press.setText("Tlak: "+pv+" hPa");
-        user.setText("Uživatel: "+mFirebaseAuth.getCurrentUser().getEmail());
+        if (mFirebaseAuth.getCurrentUser() != null){
+            if (mFirebaseAuth.getCurrentUser().getEmail() != null) {
+                user.setText("Uživatel: " + mFirebaseAuth.getCurrentUser().getEmail());
+            }
+        }
 
         SharedPreferences dateshare = getSharedPreferences(DATESHARE_VALUES,0);
         datesharevalue=dateshare.getString("dateshare", datesharevalue);
@@ -112,28 +118,31 @@ public class HomeActivity extends AppCompatActivity{
         super.onResume();
         setContentView(R.layout.activity_home);
         mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        if(mFirebaseAuth.getCurrentUser()==null){
+            finish();
+        }
+        user = findViewById(R.id.user);
+        temp = findViewById(R.id.temp);
+        press = findViewById(R.id.press);
+        date = findViewById(R.id.date);
 
-        user=findViewById(R.id.user);
-        temp=findViewById(R.id.temp);
-        press=findViewById(R.id.press);
-        date=findViewById(R.id.date);
 
-
-        addressline=findViewById(R.id.addressline);
-        SharedPreferences locateshare = getSharedPreferences(LOCATE_VALUES,0);
-        address=locateshare.getString("locateshare", address);
+        addressline = findViewById(R.id.addressline);
+        SharedPreferences locateshare = getSharedPreferences(LOCATE_VALUES, 0);
+        address = locateshare.getString("locateshare", address);
         addressline.setText(address);
 
-        btnLocate =findViewById(R.id.btnLocate);
-        btnLogout=findViewById(R.id.btnLogout);
-        btnTemp=findViewById(R.id.btnTemp);
+        btnLocate = findViewById(R.id.btnLocate);
+        btnLogout = findViewById(R.id.btnLogout);
+        btnTemp = findViewById(R.id.btnTemp);
         btnTemp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 launchActivityTemp();
             }
         });
-        btnPress=findViewById(R.id.btnPress);
+        btnPress = findViewById(R.id.btnPress);
         btnPress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -151,14 +160,12 @@ public class HomeActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
 
 
-
-        btnMyMap=findViewById(R.id.btnMyMap);
+        btnMyMap = findViewById(R.id.btnMyMap);
         btnMyMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -166,16 +173,18 @@ public class HomeActivity extends AppCompatActivity{
             }
         });
 
-        SharedPreferences tempshare = getSharedPreferences(TEMP_VALUES,0);
-        SharedPreferences pressshare = getSharedPreferences(PRESS_VALUES,0);
+        SharedPreferences tempshare = getSharedPreferences(TEMP_VALUES, 0);
+        SharedPreferences pressshare = getSharedPreferences(PRESS_VALUES, 0);
 
         tv = tempshare.getFloat("tempshare", tv);
-        temp.setText("Teplota: "+tv+" °C");
+        temp.setText("Teplota: " + tv + " °C");
         pv = pressshare.getFloat("pressshare", pv);
-        press.setText("Tlak: "+pv+" hPa");
-        if(mFirebaseAuth.getCurrentUser().getEmail()!=null) {
-            user.setText("Uživatel: " + mFirebaseAuth.getCurrentUser().getEmail());
-        }
+        press.setText("Tlak: " + pv + " hPa");
+        if (mFirebaseAuth.getCurrentUser() != null){
+            if (mFirebaseAuth.getCurrentUser().getEmail() != null) {
+                user.setText("Uživatel: " + mFirebaseAuth.getCurrentUser().getEmail());
+            }
+         }
         SharedPreferences dateshare = getSharedPreferences(DATESHARE_VALUES,0);
         datesharevalue=dateshare.getString("dateshare", datesharevalue);
         date.setText("Sdíleno: "+datesharevalue);
